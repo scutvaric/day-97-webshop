@@ -1,0 +1,72 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% block content %}
+{% include "header.html" %}
+
+<!-- Page Header -->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/edit-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          {% if is_edit: %}
+          <h1>Edit Item</h1>
+          {% else: %}
+          <h1>New Item</h1>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control", id="name", maxlength="50", oninput="updateCount('name', 50)") }}
+    <small id="name-count" class="form-text text-muted">50 characters left</small>
+  </div>
+
+  <div class="mb-3">
+    {{ form.description.label(class="form-label") }}
+    {{ form.description(class="form-control", id="description", maxlength="80", oninput="updateCount('description', 80)") }}
+    <small id="description-count" class="form-text text-muted">80 characters left</small>
+  </div>
+
+  <div class="mb-3">
+    {{ form.image.label(class="form-label") }}
+    {{ form.image(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.price.label(class="form-label") }}
+    {{ form.price(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.quantity.label(class="form-label") }}
+    {{ form.quantity(class="form-control") }}
+  </div>
+
+  <div class="d-flex gap-2">
+  {{ form.submit(class="btn btn-primary") }}
+
+  {% if is_edit %}
+  <!-- Cancel button: goes back without saving -->
+  <a href="{{ url_for('home') }}" class="btn btn-secondary">Cancel</a>
+  {% endif %}
+</div>
+</form>
+      </div>
+    </div>
+  </div>
+</main>
+{% include "footer.html" %} {% endblock %}
