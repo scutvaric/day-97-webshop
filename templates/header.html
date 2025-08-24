@@ -88,11 +88,14 @@
                     <a class="nav-link text-white" href="{{ url_for('contact') }}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white position-relative d-inline-flex align-items-center" href="javascript:void(0);" id="cart-toggle">
-                    <i class="fas fa-shopping-cart"></i>
-    <!-- Badge for item count -->
-                        <span class="badge bg-danger rounded-pill ms-1" id="cart-count">0</span>
-                    </a>
+                    <a class="nav-link text-white" href="javascript:void(0);" id="cart-toggle">
+    <span class="position-relative d-inline-block">
+      <i class="fas fa-shopping-cart"></i>
+      <!-- Badge for item count -->
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            id="cart-count">0</span>
+    </span>
+  </a>
                 </li>
             </ul>
         </div>
